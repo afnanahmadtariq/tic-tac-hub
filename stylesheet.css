@@ -1,6 +1,5 @@
 *{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin: 0;
 }
 body{
     top: 0;
@@ -8,27 +7,92 @@ body{
     width: auto;
     height: auto;
 }
-#video-div {
-    position: absolute;
-    top: 0;
-    left: 0;
+#intro{
+    position: fixed;
+    z-index: 2;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    z-index: -1;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    animation: disappear 1s linear 2s forwards;
 }
-#video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+#intro h1{
+    display: inline;
+    transform: translateZ(0);
+    font-size: 10vh;
+}
+#tic-tac{
+    animation: disappear 1s linear 2s forwards;
+    /* enLarge 2s ease-in 3s forwards; */
+}
+/*
+@keyframes enLarge {
+    0%{
+        font-size: 10vh;
+        padding: 2vh;
+    }
+    100%{
+        font-size: 15vh;
+        padding: 4vh;
+    }
+} */
+#web{
+    background-color: blue;
+    padding: 2vh;
+    margin: 2vh;
+    border-radius: 2vh;
+    color: white;
+    opacity: 0;
+    animation: fade-in 1s linear 0.5s forwards, disappear 1s linear 2s forwards;
+     /* enLarge 2s linear 3s forwards; */
+}
+@keyframes fade-in{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes disappear {
+    0%{display: flex;}
+    100%{display: none;}
 }
 .content{
-    position: relative;
-    margin-top: 2vh;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-
+    background-color: white;
+}
+.navbar{
+    padding: 2vh 0 3vh 0;
+    font-size:xx-large;
+    text-align: right;
+    width: 100%;
+    height: 12%;
+    background-color: antiquewhite;
+}
+.navbar ul li{
+    display: inline;
+    margin-inline: 2vh;
+}
+.navbar ul li a {
+    text-decoration: none;
+    color: black;
+}
+#title{
+    float: left;
+}
+#webInner{
+    background-color: blue;
+    width: max-content;
+    padding: 2vh;
+    margin-left: -2vh;
+    border-radius: 2vh;
+    color: white;
 }
