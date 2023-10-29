@@ -32,6 +32,15 @@ function scrollToElement(elementId) {
       
         window.scrollTo(0, offset - 120);
 }
+function tabahi(){
+        const linkList = ["https://youtu.be/xvFZjo5PgG0?si=V9suskSAE9imGj7d", "https://youtu.be/xvFZjo5PgG0?si=V9suskSAE9imGj7d"];
+        const confirmed = confirm("Are you sure you want to do this?");
+        if (confirmed) {
+                window.open('recursive.html', '_blank');
+                localStorage.setItem('count', 0);
+        }
+       
+}
 
 
 //Scroll bar width

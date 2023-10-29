@@ -1,15 +1,20 @@
-function rickRoll(){
-    // Get the info to send back.
-    const info = "This is the info I want to send back to the app.";
+window.addEventListener('DOMContentLoaded', function(){
+    this.localStorage.clear();
+    console.log("cleared");
+});
 
-    // Post the info back to the app.
-    fetch('http://localhost:8080/api/send-info', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(info),
-    });
+function rickRoll(){
+//     // Get the info to send back.
+//     const info = "This is the info I want to send back to the app.";
+
+//     // Post the info back to the app.
+//     fetch('http://localhost:8080/api/send-info', {
+//     method: 'POST',
+//     headers: {
+//         'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(info),
+//     });
 
     // var i=0;
     // while(i<4){
