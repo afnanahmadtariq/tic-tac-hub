@@ -38,18 +38,22 @@ function scrollToElement(elementId) {
 
 // window.addEventListener('DOMContentLoaded', function() {
 //         // Create a dummy element to calculate the width of the scrollbar
-//         var dummy = document.createElement('div');
-//         dummy.style.width = '100px';
-//         dummy.style.height = '100px';
-//         dummy.style.overflow = 'scroll';
-//         dummy.style.visibility = 'hidden';
-//         document.body.appendChild(dummy);
-//         var scrollbarWidth = dummy.offsetWidth - dummy.clientWidth;
-//         document.body.removeChild(dummy);
-      
-//         // Set the custom CSS variable with the scrollbar width
-//         document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth + 'px');
-//       });
+//         var flag = this.sessionStorage.getItem('nav-end');
+//         if(!flag){
+//                 var dummy = document.createElement('div');
+//                 dummy.style.width = '100px';
+//                 dummy.style.height = '100px';
+//                 dummy.style.overflow = 'scroll';
+//                 dummy.style.visibility = 'hidden';
+//                 document.body.appendChild(dummy);
+//                 var scrollbarWidth = dummy.offsetWidth - dummy.clientWidth;
+//                 document.body.removeChild(dummy);
+        
+//                 // Set the custom CSS variable with the scrollbar width
+//                 document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth + 'px');
+//                 this.sessionStorage.setItem('nav-end', true);
+//         }
+// });
 
 // (css)
 // width: calc(100% - var(--scrollbar-width));

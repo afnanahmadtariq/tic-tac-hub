@@ -53,6 +53,9 @@ body{
     border-radius: 1vh;
     color: var(--midgorund);
 }
+#nav-end{
+    margin-right: 1vw;
+}
 .content{
     position: absolute;
     top: 50%;
