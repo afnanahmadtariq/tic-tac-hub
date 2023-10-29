@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', function(){
         var targetDiv = document.getElementById('rule-book');
         if(targetDiv){
                 var referenceHeight = referenceDiv.offsetHeight;
+                referenceHeight += 1;
                 targetDiv.style.top = referenceHeight + "px";
         }
 });
@@ -26,6 +27,12 @@ function download(Url) {
         link.click();
 }
 
+function scrollToElement(elementId) {
+        var element = document.getElementById(elementId);
+        var offset = element.getBoundingClientRect().top;
+      
+        window.scrollTo(0, offset - 120);
+}
 
 
 //Scroll bar width

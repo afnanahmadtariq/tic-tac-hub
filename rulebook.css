@@ -13,12 +13,13 @@ body{
     left: 0;
     width: auto;
     height: auto;
-    background-color: #f2f2f2;
+    background-color: #bcbcbc;
     font-family: Arial, sans-serif;
     line-height: 1.5;
 }
 .navbar{
     padding: 1.5vh 0 1.5vh 0;
+    margin-top: 0;
     position: fixed;
     font-size:x-large;
     text-align: right;
@@ -66,47 +67,34 @@ body{
     max-width: 800px;
     margin: 0 auto;
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 h1 {
     text-align: center;
     color: #333;
 }
-
 h2 {
     margin-top: 20px;
     color: #555;
 }
-
 ol {
     margin: 0;
     padding-left: 20px;
 }
-
 li {
     margin-bottom: 10px;
 }
-
 p {
     color: #777;
 }
-
-a {
-    color: #007bff;
+#rule-book a {
+    cursor: pointer;
+    color: #333;
     text-decoration: none;
 }
-
-a:hover {
-    text-decoration: underline;
-}
-
-#rule-book a[href^="#"] {
-    color: #333;
-}
-
-#rule-book a[href^="#"]:hover {
+#rule-book a:hover {
     color: #007bff;
+    text-decoration: underline;
 }
