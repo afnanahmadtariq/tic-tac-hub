@@ -58,7 +58,7 @@ body{
     border-radius: 1vh;
     color: var(--midgorund);
 }
-#rule-book {
+#rule-book{
     position: absolute;
     z-index: 1;
     top: 0;

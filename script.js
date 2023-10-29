@@ -26,7 +26,6 @@ function download(Url) {
         link.setAttribute('download', '');
         link.click();
 }
-
 function scrollToElement(elementId) {
         var element = document.getElementById(elementId);
         var offset = element.getBoundingClientRect().top;
