@@ -76,12 +76,12 @@ body{
     background-color: var(--backgorund);
 }
 .navbar{
-    padding: 1.5vh 0 1.5vh 0;
+    padding-top: 1.5vh;
     position: fixed;
     font-size:x-large;
     text-align: right;
     width: 100vw;
-    height: auto;
+    height: 14vh;
     background-color: var(--midgorund);
 }
 .navbar ul li{
@@ -116,4 +116,18 @@ body{
 }
 #nav-end{
     margin-right: 1vw;
+}
+.sub-navbar{
+    margin: 0;
+    padding: 0 0 -1 0;
+    position: relative;
+    font-size: x-large;
+    text-align: center;
+    width: 100vw;
+    height: auto;
+}
+.sub-navbar ul li a#active{
+    padding: 1vh 2vh 2vh 2vh;
+    background-color: var(--backgorund);
+    border-radius: 1vh;
 }
