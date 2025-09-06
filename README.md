@@ -1,2 +1,1 @@
-# Tic-Tac-Web
-Website for tic tac ultimate
+# Tic-Tac-hub
