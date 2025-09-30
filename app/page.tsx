@@ -69,10 +69,10 @@ export default function GameHub() {
   ]
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex">
-      <aside className="w-64 bg-card border-r border-border flex flex-col">
-        {/* Logo Section */}
-        <div className="p-6 border-b border-border">
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="bg-card border-b border-border">
+        <div className="flex items-center justify-between px-6 py-4">
+          {/* Logo Section */}
           <div className="flex items-center gap-3">
             <div
               className={`w-10 h-10 bg-primary rounded-lg flex items-center justify-center ${theme === "arcade" ? "glow" : ""}`}
@@ -84,40 +84,35 @@ export default function GameHub() {
               <p className="text-xs text-muted-foreground">Board Games</p>
             </div>
           </div>
-        </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 p-4">
-          <ul className="space-y-2">
+          {/* Navigation */}
+          <nav className="flex items-center gap-6">
             {navigationItems.map((item) => {
               const IconComponent = item.icon
               return (
-                <li key={item.id}>
-                  <button
-                    onClick={() => setActiveSection(item.id)}
-                    className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
-                      activeSection === item.id
-                        ? "bg-primary text-primary-foreground"
-                        : "hover:bg-muted text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    <IconComponent className="w-5 h-5" />
-                    {item.label}
-                  </button>
-                </li>
+                <button
+                  key={item.id}
+                  onClick={() => setActiveSection(item.id)}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+                    activeSection === item.id
+                      ? "bg-primary text-primary-foreground"
+                      : "hover:bg-muted text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <IconComponent className="w-4 h-4" />
+                  {item.label}
+                </button>
               )
             })}
-          </ul>
-        </nav>
+          </nav>
 
-        {/* Theme Switcher Footer */}
-        <div className="p-4 border-t border-border">
-          <div className="space-y-2">
-            <Label htmlFor="sidebar-theme" className="text-sm">
+          {/* Theme Switcher */}
+          <div className="flex items-center gap-2">
+            <Label htmlFor="theme" className="text-sm">
               Theme
             </Label>
             <Select value={theme} onValueChange={setTheme}>
-              <SelectTrigger id="sidebar-theme" className="w-full">
+              <SelectTrigger id="theme" className="w-32">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -129,9 +124,9 @@ export default function GameHub() {
             </Select>
           </div>
         </div>
-      </aside>
+      </header>
 
-      <main className="flex-1 overflow-auto">
+      <main className="overflow-auto">
         <div className="p-8">
           {/* Home Section */}
           {activeSection === "home" && (
