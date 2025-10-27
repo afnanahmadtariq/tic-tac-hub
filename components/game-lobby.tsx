@@ -260,7 +260,6 @@ export function GameLobby({
                 className={cn(
                   "w-10 h-10 rounded-lg flex items-center justify-center",
                   color.iconBg,
-                  theme === "arcade" && "glow",
                 )}
               >
                 <HeaderIcon className={cn("w-6 h-6", color.icon ?? color.text)} />
@@ -303,7 +302,7 @@ export function GameLobby({
             </TabsList>
 
             <TabsContent value="local" className="space-y-6">
-              <Card className={cn(theme === "arcade" && "glow-card")}>
+              <Card>
                 <CardHeader>
                   <CardTitle className={color.text}>{localCardCopy.title}</CardTitle>
                   <CardDescription>{localCardCopy.description}</CardDescription>
@@ -350,7 +349,7 @@ export function GameLobby({
             </TabsContent>
 
             <TabsContent value="cpu" className="space-y-6">
-              <Card className={cn(theme === "arcade" && "glow-card")}>
+              <Card>
                 <CardHeader>
                   <CardTitle className={color.text}>{cpuCardCopy.title}</CardTitle>
                   <CardDescription>{cpuCardCopy.description}</CardDescription>
@@ -400,7 +399,7 @@ export function GameLobby({
 
             <TabsContent value="online" className="space-y-6">
               <div className="grid gap-4 md:grid-cols-2">
-                <Card className={cn(theme === "arcade" && "glow-card")}>
+                <Card>
                   <CardHeader>
                     <CardTitle className={color.text}>{onlineCopyResolved.createTitle}</CardTitle>
                     <CardDescription>{onlineCopyResolved.createDescription}</CardDescription>
@@ -429,7 +428,7 @@ export function GameLobby({
                   </CardContent>
                 </Card>
 
-                <Card className={cn(theme === "arcade" && "glow-card")}>
+                <Card>
                   <CardHeader>
                     <CardTitle className={color.text}>{onlineCopyResolved.joinTitle}</CardTitle>
                     <CardDescription>{onlineCopyResolved.joinDescription}</CardDescription>

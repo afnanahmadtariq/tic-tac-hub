@@ -126,9 +126,7 @@ export default function Quixo() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div
-                className={`w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center ${theme === "arcade" ? "glow" : ""}`}
-              >
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                 <Target className="w-6 h-6 text-primary" />
               </div>
               <div>
@@ -151,9 +149,7 @@ export default function Quixo() {
       {/* Game Board */}
       <main className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-lg">
-          <div
-            className={`grid grid-cols-5 gap-2 p-4 bg-card rounded-xl border border-border ${theme === "arcade" ? "pulse-glow" : ""}`}
-          >
+          <div className="grid grid-cols-5 gap-2 p-4 bg-card rounded-xl border border-border">
             {gameState.map((cube, index) => (
               <button
                 key={index}

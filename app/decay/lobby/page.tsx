@@ -22,7 +22,7 @@ export default function DecayLobby() {
 
   const additionalSettings = useMemo(
     () => (
-      <Card className={cn(theme === "arcade" && "glow-card")}>
+      <Card>
         <CardHeader>
           <CardTitle className="text-primary flex items-center gap-2">
             <Timer className="w-5 h-5" />

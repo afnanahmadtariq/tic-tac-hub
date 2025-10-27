@@ -112,7 +112,7 @@ export default function GameHub() {
           {/* Logo Section */}
           <div className="flex items-center gap-3">
             <div
-              className={`w-10 h-10 bg-primary rounded-lg flex items-center justify-center ${theme === "arcade" ? "glow" : ""}`}
+              className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center"
             >
               🎮
             </div>
@@ -173,12 +173,12 @@ export default function GameHub() {
                   return (
                     <Card
                       key={game.id}
-                      className={`group hover:shadow-lg transition-all duration-200 hover:scale-[1.02] ${theme === "arcade" ? "pulse-glow" : ""}`}
+                      className="group hover:shadow-lg transition-all duration-200 hover:scale-[1.02]"
                     >
                       <CardHeader className="pb-4">
                         <div className="flex items-center gap-4">
                           <div
-                            className={`w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors ${theme === "arcade" ? "glow" : ""}`}
+                            className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors"
                           >
                             <IconComponent className="w-7 h-7 text-primary" />
                           </div>
