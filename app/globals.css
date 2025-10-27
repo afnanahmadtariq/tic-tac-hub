@@ -186,18 +186,8 @@
   --sidebar-ring: oklch(0.35 0.08 30);
 }
 
-/* Added arcade glow effects */
 .arcade .glow {
   box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
-}
-
-@keyframes pulse-glow {
-  from {
-    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
-  }
-  to {
-    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
-  }
 }
 
 @theme inline {
