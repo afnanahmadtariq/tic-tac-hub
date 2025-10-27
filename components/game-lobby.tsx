@@ -355,30 +355,32 @@ export function GameLobby({
                   <CardDescription>{cpuCardCopy.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="playerName">Your Name</Label>
-                    <Input
-                      id="playerName"
-                      value={playerName}
-                      onChange={(event) => setPlayerName(event.target.value)}
-                      placeholder="Enter your name"
-                    />
-                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="playerName">Your Name</Label>
+                        <Input
+                        id="playerName"
+                        value={playerName}
+                        onChange={(event) => setPlayerName(event.target.value)}
+                        placeholder="Enter your name"
+                        />
+                    </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="difficulty">Difficulty Level</Label>
-                    <Select value={difficulty} onValueChange={setDifficulty}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select difficulty" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {cpuDifficultyOptions.map((option) => (
-                          <SelectItem key={option.value} value={option.value}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <div className="space-y-2">
+                        <Label htmlFor="difficulty">Difficulty Level</Label>
+                        <Select value={difficulty} onValueChange={setDifficulty}>
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select difficulty" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {cpuDifficultyOptions.map((option) => (
+                            <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                            </SelectItem>
+                            ))}
+                        </SelectContent>
+                        </Select>
+                    </div>
                   </div>
 
                   <div className="flex items-center justify-between">
