@@ -20,6 +20,7 @@ export default function Quixo() {
   const [winner, setWinner] = useState<"X" | "O" | "draw" | null>(null)
   const [selectedCube, setSelectedCube] = useState<number | null>(null)
   const [animatingCubes, setAnimatingCubes] = useState<Set<number>>(new Set())
+  const [slideDirection, setSlideDirection] = useState<"up" | "down" | "left" | "right" | null>(null)
 
   const checkWinner = (board: GameState): "X" | "O" | "draw" | null => {
     const lines = [
@@ -157,9 +158,10 @@ export default function Quixo() {
     }
 
     setAnimatingCubes(cubesToAnimate)
+    setSlideDirection(direction)
 
-    // Wait for animation
-    await new Promise(resolve => setTimeout(resolve, 300))
+    // Wait for animation to complete
+    await new Promise(resolve => setTimeout(resolve, 500))
 
     const newGameState = [...gameState]
 
@@ -192,6 +194,7 @@ export default function Quixo() {
 
     setGameState(newGameState)
     setAnimatingCubes(new Set())
+    setSlideDirection(null)
     setSelectedCube(null)
 
     const gameWinner = checkWinner(newGameState)
@@ -208,6 +211,7 @@ export default function Quixo() {
     setWinner(null)
     setSelectedCube(null)
     setAnimatingCubes(new Set())
+    setSlideDirection(null)
   }
 
   const getStatusText = () => {
@@ -351,6 +355,25 @@ export default function Quixo() {
                 const isSelectable = canSelectCube(index) && !winner
                 const isAnimating = animatingCubes.has(index)
                 
+                // Calculate transform for sliding animation
+                let slideTransform = ""
+                if (isAnimating && slideDirection) {
+                  switch (slideDirection) {
+                    case "left":
+                      slideTransform = "translateX(-100%)"
+                      break
+                    case "right":
+                      slideTransform = "translateX(100%)"
+                      break
+                    case "up":
+                      slideTransform = "translateY(-100%)"
+                      break
+                    case "down":
+                      slideTransform = "translateY(100%)"
+                      break
+                  }
+                }
+                
                 return (
                   <button
                     key={index}
@@ -358,7 +381,7 @@ export default function Quixo() {
                     className={`
                       aspect-square border-2 rounded-lg
                       flex items-center justify-center text-2xl font-bold
-                      transition-all duration-300 ease-out
+                      ${!isAnimating ? "transition-all duration-300" : ""}
                       ${selectedCube === index ? "border-primary bg-primary/20 scale-105 shadow-lg" : "border-border"}
                       ${isSelectable ? "hover:bg-muted hover:scale-105 cursor-pointer" : "cursor-default"}
                       ${
@@ -371,14 +394,14 @@ export default function Quixo() {
                       ${theme === "arcade" && cube !== "neutral" ? "glow" : ""}
                       ${!isEdge ? "opacity-50" : ""}
                       ${isEdge && cube === "neutral" ? "ring-1 ring-border/50" : ""}
-                      ${isAnimating ? "animate-pulse scale-95" : ""}
                     `}
                     disabled={!!winner || isAnimating}
                     style={{
-                      transform: selectedCube === index ? "scale(1.05)" : isAnimating ? "scale(0.95)" : "scale(1)",
+                      transform: isAnimating ? slideTransform : selectedCube === index ? "scale(1.05)" : "scale(1)",
+                      transition: isAnimating ? "transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)" : "all 0.3s ease-out",
                     }}
                   >
-                    <span className={`transition-all duration-200 ${isAnimating ? "opacity-50" : ""}`}>
+                    <span className="transition-all duration-200">
                       {getCubeDisplay(cube)}
                     </span>
                   </button>

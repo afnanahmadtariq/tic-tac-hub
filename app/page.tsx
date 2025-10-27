@@ -75,7 +75,7 @@ export default function GameHub() {
       description: "Slide and align cubes in 5x5",
       icon: Target,
       difficulty: "Hard",
-      players: "2 Players",
+      players: "2-4 Players",
       boardSize: "5x5 Grid",
       avgTime: "10-20 minutes",
       specialRules: "Slide cubes to create lines of 5",
