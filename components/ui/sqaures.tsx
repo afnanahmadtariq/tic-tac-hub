@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useRef, useEffect } from 'react';
 
 type CanvasStrokeStyle = string | CanvasGradient | CanvasPattern;
@@ -80,7 +82,9 @@ const Squares: React.FC<SquaresProps> = ({
         Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
       );
       gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
-      gradient.addColorStop(1, '#060010');
+
+      const themeBg = getComputedStyle(document.documentElement).getPropertyValue('--background')?.trim() || '#060010';
+      gradient.addColorStop(1, themeBg);
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
