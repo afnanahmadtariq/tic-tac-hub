@@ -11,12 +11,28 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Trophy, Users, Settings, Home, Gamepad2, Zap, Grid3X3, Target } from "lucide-react"
 import { useTheme } from "@/components/theme-provider"
 import Link from "next/link"
+import Squares from "@/components/ui/sqaures"
 
 export default function GameHub() {
   const [soundEnabled, setSoundEnabled] = useState(true)
   const [animationsEnabled, setAnimationsEnabled] = useState(true)
   const [activeSection, setActiveSection] = useState("home")
   const { theme, setTheme } = useTheme()
+
+  const getSquaresColors = (theme: string) => {
+    switch (theme) {
+      case "light":
+        return { borderColor: "#ccc", hoverFillColor: "#ddd" }
+      case "arcade":
+        return { borderColor: "#00ff00", hoverFillColor: "#00aa00" }
+      case "wooden":
+        return { borderColor: "#8B4513", hoverFillColor: "#A0522D" }
+      default: // dark
+        return { borderColor: "#333", hoverFillColor: "#444" }
+    }
+  }
+
+  const squaresColors = getSquaresColors(theme)
 
   const games = [
     {
@@ -26,6 +42,9 @@ export default function GameHub() {
       icon: Grid3X3,
       difficulty: "Easy",
       players: "2 Players",
+      boardSize: "3x3 Grid",
+      avgTime: "2-5 minutes",
+      specialRules: "First to get 3 in a row wins",
     },
     {
       id: "ultimate",
@@ -34,6 +53,9 @@ export default function GameHub() {
       icon: Gamepad2,
       difficulty: "Hard",
       players: "2 Players",
+      boardSize: "9x9 Meta Grid",
+      avgTime: "15-30 minutes",
+      specialRules: "Win smaller boards to control larger ones",
     },
     {
       id: "decay",
@@ -42,6 +64,9 @@ export default function GameHub() {
       icon: Zap,
       difficulty: "Medium",
       players: "2 Players",
+      boardSize: "3x3 Grid",
+      avgTime: "5-10 minutes",
+      specialRules: "Moves disappear after 5 turns",
     },
     {
       id: "quixo",
@@ -50,6 +75,9 @@ export default function GameHub() {
       icon: Target,
       difficulty: "Hard",
       players: "2 Players",
+      boardSize: "5x5 Grid",
+      avgTime: "10-20 minutes",
+      specialRules: "Slide cubes to create lines of 5",
     },
   ]
 
@@ -70,7 +98,16 @@ export default function GameHub() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="bg-card border-b border-border">
+      <div className="absolute inset-0 z-0">
+        <Squares
+          direction="diagonal"
+          speed={0.5}
+          borderColor={squaresColors.borderColor}
+          squareSize={40}
+          hoverFillColor={squaresColors.hoverFillColor}
+        />
+      </div>
+      <header className="bg-card border-b border-border relative z-10">
         <div className="flex items-center justify-between px-6 py-4">
           {/* Logo Section */}
           <div className="flex items-center gap-3">
@@ -125,20 +162,12 @@ export default function GameHub() {
           </div>
         </div>
       </header>
-
-      <main className="overflow-auto">
+      <main className="overflow-auto relative z-10">
         <div className="p-8">
           {/* Home Section */}
           {activeSection === "home" && (
             <div className="space-y-6">
-              <div className="text-center space-y-2 mb-8">
-                <h2 className="text-3xl font-bold text-balance">Choose Your Game</h2>
-                <p className="text-muted-foreground text-pretty">
-                  Challenge friends, play against AI, or practice locally
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
                 {games.map((game) => {
                   const IconComponent = game.icon
                   return (
@@ -146,33 +175,47 @@ export default function GameHub() {
                       key={game.id}
                       className={`group hover:shadow-lg transition-all duration-200 hover:scale-[1.02] ${theme === "arcade" ? "pulse-glow" : ""}`}
                     >
-                      <CardHeader className="pb-3">
-                        <div className="flex items-start justify-between">
-                          <div className="flex items-center gap-3">
-                            <div
-                              className={`w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors ${theme === "arcade" ? "glow" : ""}`}
-                            >
-                              <IconComponent className="w-6 h-6 text-primary" />
-                            </div>
-                            <div>
-                              <CardTitle className="text-lg">{game.title}</CardTitle>
-                              <div className="flex items-center gap-2 mt-1">
-                                <Badge variant="outline" className="text-xs">
-                                  {game.difficulty}
-                                </Badge>
-                                <Badge variant="secondary" className="text-xs">
-                                  {game.players}
-                                </Badge>
-                              </div>
+                      <CardHeader className="pb-4">
+                        <div className="flex items-center gap-4">
+                          <div
+                            className={`w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors ${theme === "arcade" ? "glow" : ""}`}
+                          >
+                            <IconComponent className="w-7 h-7 text-primary" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <CardTitle className="text-xl mb-2">{game.title}</CardTitle>
+                            <div className="flex flex-wrap items-center gap-2">
+                              <Badge variant="outline" className="text-xs">
+                                {game.difficulty}
+                              </Badge>
+                              <Badge variant="secondary" className="text-xs">
+                                {game.players}
+                              </Badge>
                             </div>
                           </div>
                         </div>
-                        <CardDescription className="text-pretty">{game.description}</CardDescription>
+                        <CardDescription className="text-pretty mt-3 text-sm leading-relaxed">
+                          {game.description}
+                        </CardDescription>
+                        <div className="mt-4 space-y-2">
+                          <div className="flex justify-between text-xs">
+                            <span className="text-muted-foreground">Board Size:</span>
+                            <span className="font-medium">{game.boardSize}</span>
+                          </div>
+                          <div className="flex justify-between text-xs">
+                            <span className="text-muted-foreground">Avg. Time:</span>
+                            <span className="font-medium">{game.avgTime}</span>
+                          </div>
+                          <div className="text-xs">
+                            <span className="text-muted-foreground">Special Rules:</span>
+                            <p className="font-medium mt-1 leading-tight">{game.specialRules}</p>
+                          </div>
+                        </div>
                       </CardHeader>
                       <CardContent className="pt-0">
                         <Link href={`/${game.id}/lobby`} className="block">
-                          <Button size="sm" className="w-full">
-                            Play
+                          <Button size="sm" className="w-full group-hover:bg-primary/90 transition-colors">
+                            Play Now
                           </Button>
                         </Link>
                       </CardContent>
