@@ -170,23 +170,11 @@ export default function GameHub() {
                         <CardDescription className="text-pretty">{game.description}</CardDescription>
                       </CardHeader>
                       <CardContent className="pt-0">
-                        <div className="flex gap-2">
-                          <Link href={`/${game.id}/lobby`} className="flex-1">
-                            <Button size="sm" className="w-full">
-                              Local
-                            </Button>
-                          </Link>
-                          <Link href={`/${game.id}/lobby`} className="flex-1">
-                            <Button size="sm" variant="secondary" className="w-full">
-                              CPU
-                            </Button>
-                          </Link>
-                          <Link href={`/${game.id}/lobby`} className="flex-1">
-                            <Button size="sm" variant="outline" className="w-full bg-transparent">
-                              Online
-                            </Button>
-                          </Link>
-                        </div>
+                        <Link href={`/${game.id}/lobby`} className="block">
+                          <Button size="sm" className="w-full">
+                            Play
+                          </Button>
+                        </Link>
                       </CardContent>
                     </Card>
                   )
