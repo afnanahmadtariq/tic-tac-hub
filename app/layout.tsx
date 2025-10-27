@@ -8,8 +8,13 @@ import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Tic Tac Hub - Play Board Games Online",
-  description: "Play Tic Tac Toe variants and Quixo with friends online, against CPU, or locally"
+  title: "Tic Tac Hub | Play Board Games Online",
+  description: "Play Tic Tac Toe variants and Quixo with friends online, against CPU, or locally",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 }
 
 export default function RootLayout({

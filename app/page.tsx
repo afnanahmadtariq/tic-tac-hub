@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Trophy, Users, Settings, Home, Gamepad2, Zap, Grid3X3, Target } from "lucide-react"
+import Image from "next/image"
 import { useTheme } from "@/components/theme-provider"
 import Link from "next/link"
 import Squares from "@/components/ui/sqaures"
@@ -111,14 +112,12 @@ export default function GameHub() {
         <div className="flex items-center justify-between px-6 py-4">
           {/* Logo Section */}
           <div className="flex items-center gap-3">
-            <div
-              className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center"
-            >
-              🎮
+            <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
+              <Image src="/logo.png" alt="GameHub" width={36} height={36} />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-balance">GameHub</h1>
-              <p className="text-xs text-muted-foreground">Board Games</p>
+              <h1 className="text-xl font-bold text-balance">Tic Tac Hub</h1>
+              <p className="text-xs text-muted-foreground">Play Board Games Online</p>
             </div>
           </div>
 
@@ -167,6 +166,13 @@ export default function GameHub() {
           {/* Home Section */}
           {activeSection === "home" && (
             <div className="space-y-6">
+              <div className="text-center space-y-2 mb-8">
+                <h2 className="text-3xl font-bold text-balance">Choose Your Game</h2>
+                <p className="text-muted-foreground text-pretty">
+                  Challenge friends, play against AI, or practice locally
+                </p>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
                 {games.map((game) => {
                   const IconComponent = game.icon
